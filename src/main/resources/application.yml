@@ -1,0 +1,14 @@
+server:
+  port: 8081
+
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: restify_proxy
+            uri: http://localhost:80/api/restifydb/
+            predicates:
+              - Path=/api/restifydb/**
+            filters:
+              - StripPrefix=0
